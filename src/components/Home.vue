@@ -9,7 +9,7 @@ export default {
   methods: {
     logout() {
       // 清除token
-      window.sessionStorage.clear();
+      window.sessionStorage.clear()
       // 重定向到登录页
       this.$router.push('/login')
     }
