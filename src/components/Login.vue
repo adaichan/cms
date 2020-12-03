@@ -86,14 +86,14 @@ export default {
       this.$refs.loginFormRef.validate(async valid => {
         // console.log(valid) 打印输出true/false
         if (!valid) return
-        /* post的返回值是promise，用async和await来简化promise操作，console.log(rst) 发现接收对象的data属性中的数据才是我们需要的，利用解构赋值来解构右边的data属性赋值给变量rst去接收 */
-        const { data: rst } = await this.$http.post('login', this.loginForm)
-        if (rst.meta.status !== 200) {
+        /* post的返回值是promise，用async和await来简化promise操作，console.log(res) 发现接收对象的data属性中的数据才是我们需要的，利用解构赋值来解构右边的data属性赋值给变量res去接收 */
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.meta.status !== 200) {
           return this.$message.error('密码错误，登录失败！')
         }
         this.$message.success('恭喜你，登陆成功！')
         // 1. token只在当前网站打开期间生效，将登陆成功的token保存在sessionStorage中，提供一个身份验证的信息，使项目的其他API接口在登入后才能访问
-        window.sessionStorage.setItem('token', rst.data.token)
+        window.sessionStorage.setItem('token', res.data.token)
         // 2. 通过编程式导航跳转到后台主页，路由地址是/home
         this.$router.push('/home')
       })
