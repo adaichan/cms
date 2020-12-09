@@ -20,6 +20,10 @@ html, body, #app {
   font-size: 12px;
 }
 
-el-pagination {
+.el-pagination {
   margin-top: 15px;
+}
+
+.el-cascader-menu {
+  height: 228px;
 }
